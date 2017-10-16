@@ -11,8 +11,7 @@ import android.widget.Toast;
 public class SmsSender {
     private Context AppContext;
 
-    public SmsSender(Context appContext)
-    {
+    public SmsSender(Context appContext) {
         this.AppContext = appContext;
     }
 
