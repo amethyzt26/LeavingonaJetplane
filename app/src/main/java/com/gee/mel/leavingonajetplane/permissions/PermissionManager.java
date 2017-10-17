@@ -20,7 +20,7 @@ public class PermissionManager {
     }
 
     public void grantPermissions() {
-        grantReadSmsPermission();
+        grantReceiveSmsPermission();
         grantSendSmsPermission();
     }
 
@@ -37,7 +37,7 @@ public class PermissionManager {
         }
     }
 
-    private void grantReadSmsPermission()  {
+    private void grantReceiveSmsPermission()  {
         if(ContextCompat.checkSelfPermission(compatActivity,
                 Manifest.permission.READ_SMS) != PackageManager.PERMISSION_GRANTED) {
             if(ActivityCompat.shouldShowRequestPermissionRationale(
