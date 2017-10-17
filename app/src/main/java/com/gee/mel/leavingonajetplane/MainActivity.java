@@ -2,7 +2,6 @@ package com.gee.mel.leavingonajetplane;
 
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
-import android.util.MalformedJsonException;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
@@ -12,7 +11,8 @@ import com.gee.mel.leavingonajetplane.messages.SmsSender;
 import com.gee.mel.leavingonajetplane.permissions.PermissionManager;
 
 public class MainActivity extends AppCompatActivity {
-    private static final String MESSAGE_RECEPIENT = "09989660768";
+    private static final String SMS_RECEPIENT = "09989660768";
+    private static final String EMAIL_RECEPIENT = "melodygiuco.work@gmail.com";
     private PermissionManager permissionManager;
     private SmsSender smsSender;
     private MailSender mailSender;
@@ -50,11 +50,12 @@ public class MainActivity extends AppCompatActivity {
     }
 
     private void sendMail() {
-        mailSender.sendMail();
+        message = txt_Message.getText().toString();
+        mailSender.sendMail(EMAIL_RECEPIENT, "[LEAVE]", message);
     }
 
     private void sendSms() {
         message = txt_Message.getText().toString();
-        smsSender.sendSms(message, MESSAGE_RECEPIENT);
+        smsSender.sendSms(message, SMS_RECEPIENT);
     }
 }

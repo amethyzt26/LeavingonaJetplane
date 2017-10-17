@@ -14,9 +14,11 @@ public class MailSender {
     public MailSender(android.content.Context appContext) {
         this.AppContext = appContext;
     }
-    public void sendMail() {
-        Intent emailIntent = new Intent(Intent.ACTION_SENDTO);
-        emailIntent.setData(Uri.parse("mailto:melodygiuco.work@gmail.com"));
-        AppContext.startActivity(emailIntent);
+    public void sendMail(String recipient, String subject, String body) {
+        Intent emailIntent = new Intent(Intent.ACTION_SEND);
+        emailIntent.putExtra(Intent.EXTRA_EMAIL, new String[]{recipient});
+        emailIntent.putExtra(Intent.EXTRA_SUBJECT, subject);
+        emailIntent.putExtra(Intent.EXTRA_TEMPLATE, body);
+        AppContext.startActivity(Intent.createChooser(emailIntent, "Choose an email client:"));
     }
 }
